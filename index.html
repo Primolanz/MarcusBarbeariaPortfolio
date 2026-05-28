@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marcus Ortensi - Portfólio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Syne (Headings) & Plus Jakarta Sans (Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="icon" href="src/midias/icon.png">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap"
+        rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        heading: ['Syne', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            black: '#0A0A0A',
+                            darker: '#050505',
+                            card: '#121212',
+                            red: '#FF003C',
+                            redHover: '#E00034',
+                            redGlow: 'rgba(255, 0, 60, 0.35)',
+                        }
+                    },
+                    boxShadow: {
+                        'neon': '0 0 15px rgba(255, 0, 60, 0.4)',
+                        'neon-thick': '0 0 25px rgba(255, 0, 60, 0.6)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html,
+        body {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        img,
+        video,
+        svg {
+            max-width: 100%;
+        }
+
+        #services-list>div,
+        #services-list h4,
+        #services-list p {
+            min-width: 0;
+            overflow-wrap: anywhere;
+        }
+
+        #services-list>div {
+            gap: 1rem;
+        }
+
+        #services-list>div>span {
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 380px) {
+            #home h1 {
+                font-size: 2rem;
+                line-height: 1.12;
+            }
+        }
+
+        /* Ajuste de scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0A0A0A;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #FF003C;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #E00034;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-brand-black text-gray-100 font-sans selection:bg-brand-red selection:text-white antialiased overflow-x-hidden">
+
+    <!-- Header / Navbar -->
+    <header
+        class="fixed top-0 left-0 w-full z-50 bg-brand-black/80 backdrop-blur-md border-b border-white/5 transition-all duration-300"
+        id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between gap-4">
+            <!-- Logo -->
+            <a href="#home" class="flex items-center gap-2 group min-w-0">
+                <span
+                    class="text-xl sm:text-2xl font-heading font-extrabold tracking-wider text-white group-hover:text-brand-red transition-colors truncate">
+                    MARCUS ORTENSI<span class="text-brand-red">.</span>
+                </span>
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="#home" class="text-sm font-medium hover:text-brand-red transition-colors">Início</a>
+                <a href="#sobre" class="text-sm font-medium hover:text-brand-red transition-colors">Sobre</a>
+                <a href="#trabalhos" class="text-sm font-medium hover:text-brand-red transition-colors">Trabalhos</a>
+                <a href="#servicos" class="text-sm font-medium hover:text-brand-red transition-colors">Serviços</a>
+                <a href="#contato" class="text-sm font-medium hover:text-brand-red transition-colors">Contato</a>
+            </nav>
+
+            <!-- CTA Header -->
+            <div class="hidden md:block">
+                <a href="#agendamento-direto"
+                    class="px-5 py-2.5 bg-transparent border-2 border-brand-red text-white hover:bg-brand-red text-xs uppercase tracking-widest font-bold rounded-lg transition-all duration-300 hover:shadow-neon">
+                    Agendar Horário
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden text-white hover:text-brand-red focus:outline-none shrink-0" id="menu-btn"
+                aria-label="Abrir Menu">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Drawer -->
+        <div class="fixed top-20 left-0 w-full bg-brand-darker border-b border-white/10 hidden flex-col p-6 space-y-4 md:hidden transition-all duration-300"
+            id="mobile-menu">
+            <a href="#home" class="mobile-link text-lg font-medium py-2 border-b border-white/5">Início</a>
+            <a href="#sobre" class="mobile-link text-lg font-medium py-2 border-b border-white/5">Sobre</a>
+            <a href="#trabalhos" class="mobile-link text-lg font-medium py-2 border-b border-white/5">Trabalhos</a>
+            <a href="#servicos" class="mobile-link text-lg font-medium py-2 border-b border-white/5">Serviços</a>
+            <a href="#contato" class="mobile-link text-lg font-medium py-2">Contato</a>
+            <a href="#agendamento-direto"
+                class="mobile-link w-full text-center py-3 bg-brand-red hover:bg-brand-redHover text-white font-bold rounded-lg uppercase tracking-wider text-sm inline-block shadow-neon">
+                Agendar Agora
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+        <!-- Background Overlay / Pattern -->
+        <div
+            class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-brand-red/10 via-brand-black to-brand-black opacity-80 z-0">
+        </div>
+        <div class="absolute inset-0 bg-cover bg-center mix-blend-overlay opacity-25"
+            style="background-image: url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&q=80&w=1200');">
+        </div>
+
+        <div
+            class="max-w-7xl mx-auto px-6 relative z-10 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center py-12">
+            <!-- Hero Text -->
+            <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+
+
+                <h1
+                    class="text-4xl sm:text-6xl lg:text-7xl font-heading font-black tracking-tight leading-tight text-white">
+                    CORTES QUE<br class="hidden sm:block">
+                    <span
+                        class="text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-300 to-brand-red">DEFINEM
+                        ATITUDE.</span>
+                </h1>
+
+                <p class="text-gray-400 text-base sm:text-lg max-w-xl mx-auto lg:mx-0">
+                    Não é apenas sobre tirar o cabelo. É sobre design, simetria e elevar a sua melhor versão! Agende sua
+                    experiência premium hoje.
+                </p>
+
+                <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                    <a href="#agendamento-direto"
+                        class="w-full sm:w-auto px-8 py-4 bg-brand-red hover:bg-brand-redHover text-white text-sm font-extrabold uppercase tracking-widest rounded-lg transition-all duration-300 hover:shadow-neon flex items-center justify-center gap-2">
+                        <i data-lucide="calendar" class="w-4 h-4"></i>
+                        Agendar Horário
+                    </a>
+                    <a href="#trabalhos"
+                        class="w-full sm:w-auto px-8 py-4 bg-transparent hover:bg-white/5 border border-white/15 text-white text-sm font-bold uppercase tracking-widest rounded-lg transition-colors flex items-center justify-center gap-2">
+                        Ver Portfólio
+                    </a>
+                </div>
+
+                <!-- Features Badges -->
+
+            </div>
+
+            <!-- Hero Image / Visual Element -->
+            <div class="lg:col-span-5 relative hidden lg:block">
+                <div
+                    class="absolute -inset-1.5 bg-gradient-to-r from-brand-red to-purple-600 rounded-2xl blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200">
+                </div>
+                <div class="relative bg-brand-card border border-white/10 p-4 rounded-2xl overflow-hidden shadow-2xl">
+                    <img src="src/midias/corte5.jpeg" alt="Corte de Cabelo Premium"
+                        class="rounded-xl w-full object-cover aspect-[4/5]"
+                        onerror="this.src='https://via.placeholder.com/600x750/111111/FF003C?text=Premium+Cut'">
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre Mim Section -->
+    <section id="sobre" class="py-24 bg-brand-darker border-t border-white/5 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <!-- Imagem -->
+                <div class="relative">
+                    <div class="absolute -top-4 left-0 sm:-left-4 w-24 h-24 border-t-2 border-l-2 border-brand-red"></div>
+                    <div class="absolute -bottom-4 right-0 sm:-right-4 w-24 h-24 border-b-2 border-r-2 border-brand-red"></div>
+                    <div class="overflow-hidden rounded-lg bg-brand-card p-2 border border-white/5">
+                        <img src="src/midias/profissional.jpeg" alt="Barbeiro Profissional em ação"
+                            class="w-full object-cover aspect-[3/4] "
+                            onerror="this.src='https://via.placeholder.com/600x800/111111/FF003C?text=Professional+Barber'">
+                    </div>
+                </div>
+
+                <!-- Texto -->
+                <div class="space-y-6">
+                    <div class="space-y-2">
+                        <span class="text-xs font-bold uppercase tracking-widest text-brand-red">Por Trás da
+                            Tesoura</span>
+                        <h2 class="text-3xl sm:text-4xl font-heading font-black text-white">MEU
+                            COMPROMISSO.</h2>
+                    </div>
+
+                    <p class="text-gray-300 leading-relaxed">
+                        Me chamo <strong class="text-white">Marcus Ortensi</strong>, Muito mais do que cortar cabelo e
+                        aparar a barba, a minha missão como barbeiro é entender o seu estilo e traduzi-lo no seu visual.
+                        Acredito que uma boa barbearia vai além da tesoura e da máquina: é sobre proporcionar uma
+                        experiência única.
+                    </p>
+
+                    <p class="text-gray-400 leading-relaxed">
+                        Por isso, priorizo sempre um atendimento ao cliente de excelência, com dedicação, conversas de
+                        alto nível (ou aquele momento de silêncio para relaxar, se preferir) e o cuidado que você
+                        merece. Cada detalhe é pensado para que você saia da cadeira transformado e com a confiança
+                        renovada.
+                        Venha viver essa experiência e dar um upgrade no seu visual!
+                    </p>
+
+                    <div class="grid grid-cols-2 gap-6 pt-4">
+                        <div class="flex items-start gap-3">
+                            <div class="p-2 bg-brand-red/10 rounded-lg text-brand-red">
+                                <i data-lucide="award" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-sm">Altamente Certificado</h4>
+                                <p class="text-xs text-gray-400">Técnicas internacionais e workshops renomados.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3">
+                            <div class="p-2 bg-brand-red/10 rounded-lg text-brand-red">
+                                <i data-lucide="scissors" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-sm">Materiais Top de Linha</h4>
+                                <p class="text-xs text-gray-400">Equipamentos profissionais de última geração.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Assinatura / Final -->
+                    <div class="pt-6 border-t border-white/5 flex items-center justify-between">
+                        <div>
+                            <p class="text-white font-heading font-bold text-lg">Marcus Ortensi</p>
+                            <p class="text-xs text-brand-red uppercase tracking-widest">Colaborador do <strong>NoRafa -
+                                    Barbearia!</strong></p>
+                        </div>
+
+                        <!-- Social Fast Links -->
+                        <div class="flex items-center gap-3">
+                            <a href="https://www.instagram.com/ortensi_barber/" target="_blank" rel="noopener noreferrer"
+                                class="w-10 h-10 rounded-full bg-white/5 hover:bg-brand-red text-white hover:text-white flex items-center justify-center transition-all duration-300"
+                                aria-label="Acessar Instagram">
+                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
+                            </a>
+                            <a href="https://tiktok.com/@ortensi_barber?r=1&t=ZS-96ixkPN1cPI" target="_blank" rel="noopener noreferrer"
+                                class="w-10 h-10 rounded-full bg-white/5 hover:bg-brand-red text-white hover:text-white flex items-center justify-center transition-all duration-300"
+                                aria-label="Acessar TikTok">
+                                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                                    <path
+                                        d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.89-.6-4.09-1.5-.77-.6-1.39-1.39-1.81-2.3v7.33c.03 3.64-2.37 7.15-5.96 7.82-3.61.67-7.46-1.43-8.5-4.97C1.03 12.92 2.91 8.7 6.64 7.79c1.11-.27 2.29-.22 3.39.09v4.11c-.81-.32-1.74-.35-2.52.07-.95.49-1.53 1.55-1.41 2.63.15 1.34 1.41 2.37 2.76 2.19 1.35-.15 2.29-1.39 2.17-2.73.01-4.71.01-9.42.01-14.13z" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galeria de Trabalhos Section -->
+    <section id="trabalhos" class="py-24 bg-brand-black border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+                <div class="space-y-2">
+                    <span class="text-xs font-bold uppercase tracking-widest text-brand-red">Portfólio:</span>
+                    <h2 class="text-3xl sm:text-4xl font-heading font-black text-white">CORTES E DESIGN EXECUTADOS</h2>
+                </div>
+
+
+
+                <!-- Grid de Fotos -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="gallery-grid">
+                    <!-- Foto 1 (Cabelo) -->
+                    <div class="gallery-item group relative aspect-square overflow-hidden rounded-xl border border-white/10 bg-brand-card cursor-pointer"
+                        data-category="cabelo">
+                        <img src="src/midias/corte5.jpeg" alt="Tranças nagô com freestyle"
+                            class="w-full h-full object-cover scale-110 filter grayscale group grayscale-0">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/40 to-transparent opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                            <span class="text-xs font-extrabold uppercase tracking-widest text-brand-red">Cabelo</span>
+                            <h4 class="text-lg font-bold text-white">Tranças Nagô + Freestyle</h4>
+                            <p class="text-xs text-gray-300 mt-1">Tranças alinhadas com desenho navalhado e acabamento limpo na nuca.</p>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item group relative aspect-square overflow-hidden rounded-xl border border-white/10 bg-brand-card cursor-pointer"
+                        data-category="cabelo">
+                        <img src="src/midias/corte2.jpeg" alt="Low fade em cabelo cacheado com barba alinhada"
+                            class="w-full h-full object-cover scale-110 filter grayscale group grayscale-0">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/40 to-transparent opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                            <span class="text-xs font-extrabold uppercase tracking-widest text-brand-red">Cabelo</span>
+                            <h4 class="text-lg font-bold text-white">Low Fade Cacheado</h4>
+                            <p class="text-xs text-gray-300 mt-1">Degradê baixo valorizando os cachos, com contorno marcado e barba alinhada.</p>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item group relative aspect-square overflow-hidden rounded-xl border border-white/10 bg-brand-card cursor-pointer"
+                        data-category="cabelo">
+                        <img src="src/midias/corte3.jpeg" alt="Mid fade em cabelo crespo com barba desenhada"
+                            class="w-full h-full object-cover scale-110 filter grayscale group grayscale-0">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/40 to-transparent opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                            <span class="text-xs font-extrabold uppercase tracking-widest text-brand-red">Cabelo</span>
+                            <h4 class="text-lg font-bold text-white">Mid Fade Crespo</h4>
+                            <p class="text-xs text-gray-300 mt-1">Laterais em degradê médio, topo natural e barba desenhada no formato do rosto.</p>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item group relative aspect-square overflow-hidden rounded-xl border border-white/10 bg-brand-card cursor-pointer"
+                        data-category="cabelo">
+                        <img src="src/midias/corte4.jpeg" alt="Corte social texturizado com taper baixo"
+                            class="w-full h-full object-cover scale-110 filter grayscale group grayscale-0">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/40 to-transparent opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                            <span class="text-xs font-extrabold uppercase tracking-widest text-brand-red">Cabelo</span>
+                            <h4 class="text-lg font-bold text-white">Social Texturizado</h4>
+                            <p class="text-xs text-gray-300 mt-1">Corte discreto com volume no topo, taper baixo e acabamento natural.</p>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item group relative aspect-square overflow-hidden rounded-xl border border-white/10 bg-brand-card cursor-pointer"
+                        data-category="cabelo">
+                        <img src="src/midias/corte6.jpeg" alt="Mid fade com risquinho lateral"
+                            class="w-full h-full object-cover scale-110 filter grayscale group grayscale-0">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/40 to-transparent opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                            <span class="text-xs font-extrabold uppercase tracking-widest text-brand-red">Cabelo</span>
+                            <h4 class="text-lg font-bold text-white">Mid Fade com Risco</h4>
+                            <p class="text-xs text-gray-300 mt-1">Degradê médio bem polido, franja alinhada e detalhe navalhado na lateral.</p>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item group relative aspect-square overflow-hidden rounded-xl border border-white/10 bg-brand-card cursor-pointer"
+                        data-category="cabelo">
+                        <img src="src/midias/corfte8.jpeg" alt="Taper fade baixo com topo natural"
+                            class="w-full h-full object-cover scale-110 filter grayscale group grayscale-0">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/40 to-transparent opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                            <span class="text-xs font-extrabold uppercase tracking-widest text-brand-red">Cabelo</span>
+                            <h4 class="text-lg font-bold text-white">Taper Fade Natural</h4>
+                            <p class="text-xs text-gray-300 mt-1">Acabamento baixo ao redor da orelha e nuca, mantendo movimento no topo.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- Tabela de Serviços & Preços (Valoriza o Portfolio) -->
+    <section id="servicos" class="py-16 bg-brand-darker border-t border-white/5 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto mb-10 space-y-2">
+                <span class="text-xs font-bold uppercase tracking-widest text-brand-red">Preço Justo & Qualidade</span>
+                <h2 class="text-3xl sm:text-4xl font-heading font-black text-white">TABELA DE SERVIÇOS</h2>
+                <p class="text-gray-400">Tratamento de primeira classe em todos os detalhes do seu visual.</p>
+            </div>
+
+            <div id="services-list" class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <!-- Serviço 1 -->
+                <div
+                    class="bg-brand-card p-6 rounded-xl border border-white/5 flex items-start justify-between group hover:border-brand-red/30 transition-colors">
+                    <div class="space-y-1">
+                        <h4 class="text-lg font-bold text-white group-hover:text-brand-red transition-colors">Corte degrade/cortes avançados</h4>
+                        <p class="text-xs text-gray-400">Atendimento de 30 minutos para cortes modernos e degradês.</p>
+                    </div>
+                    <span class="text-xl font-heading font-extrabold text-brand-red">R$ 38</span>
+                </div>
+
+                <!-- Serviço 2 -->
+                <div
+                    class="bg-brand-card p-6 rounded-xl border border-white/5 flex items-start justify-between group hover:border-brand-red/30 transition-colors">
+                    <div class="space-y-1">
+                        <h4 class="text-lg font-bold text-white group-hover:text-brand-red transition-colors">Corte infantil - até 5 anos</h4>
+                        <p class="text-xs text-gray-400">Corte para crianças de 2 anos e meio até 5 anos.</p>
+                    </div>
+                    <span class="text-xl font-heading font-extrabold text-brand-red">R$ 45</span>
+                </div>
+
+                <!-- Serviço 3 -->
+                <div
+                    class="bg-brand-card p-6 rounded-xl border border-white/5 flex items-start justify-between group hover:border-brand-red/30 transition-colors">
+                    <div class="space-y-1">
+                        <h4 class="text-lg font-bold text-white group-hover:text-brand-red transition-colors">Corte navalhado</h4>
+                        <p class="text-xs text-gray-400">Corte com acabamento navalhado e contornos alinhados.</p>
+                    </div>
+                    <span class="text-xl font-heading font-extrabold text-brand-red">R$ 45</span>
+                </div>
+
+                <!-- Serviço 4 -->
+                <div
+                    class="bg-brand-card p-6 rounded-xl border border-white/5 flex items-start justify-between group hover:border-brand-red/30 transition-colors">
+                    <div class="space-y-1">
+                        <h4 class="text-lg font-bold text-white group-hover:text-brand-red transition-colors">COMBO 1 - Corte + sobrancelha</h4>
+                        <p class="text-xs text-gray-400">Serviço de corte com design de sobrancelha.</p>
+                    </div>
+                    <span class="text-xl font-heading font-extrabold text-brand-red">R$ 45</span>
+                </div>
+
+                <!-- Serviço 5 -->
+                <div
+                    class="bg-brand-card p-6 rounded-xl border border-white/5 flex items-start justify-between group hover:border-brand-red/30 transition-colors">
+                    <div class="space-y-1">
+                        <h4 class="text-lg font-bold text-white group-hover:text-brand-red transition-colors">COMBO 2 - corte + barba express</h4>
+                        <p class="text-xs text-gray-400">Corte completo com barba express.</p>
+                    </div>
+                    <span class="text-xl font-heading font-extrabold text-brand-red">R$ 62</span>
+                </div>
+
+                <!-- Serviço 6 -->
+                <div
+                    class="bg-brand-card p-6 rounded-xl border border-white/5 flex items-start justify-between group hover:border-brand-red/30 transition-colors">
+                    <div class="space-y-1">
+                        <h4 class="text-lg font-bold text-white group-hover:text-brand-red transition-colors">COMBO 3 - corte + barba express + sobrancelha</h4>
+                        <p class="text-xs text-gray-400">Corte, barba express e acabamento na sobrancelha.</p>
+                    </div>
+                    <span class="text-xl font-heading font-extrabold text-brand-red">R$ 65</span>
+                </div>
+
+                <!-- Serviço 7 -->
+                <div
+                    class="bg-brand-card p-6 rounded-xl border border-white/5 flex items-start justify-between group hover:border-brand-red/30 transition-colors">
+                    <div class="space-y-1">
+                        <h4 class="text-lg font-bold text-white group-hover:text-brand-red transition-colors">COMBO 4 - Corte navalhado + barba express + sobrancelha</h4>
+                        <p class="text-xs text-gray-400">Corte navalhado com barba express e sobrancelha.</p>
+                    </div>
+                    <span class="text-xl font-heading font-extrabold text-brand-red">R$ 70</span>
+                </div>
+
+                <!-- Serviço 8 -->
+                <div
+                    class="bg-brand-card p-6 rounded-xl border border-white/5 flex items-start justify-between group hover:border-brand-red/30 transition-colors">
+                    <div class="space-y-1">
+                        <h4 class="text-lg font-bold text-white group-hover:text-brand-red transition-colors">COMBO 5 - Corte + Barboterapia</h4>
+                        <p class="text-xs text-gray-400">Corte com barboterapia, ozônio ou toalha quente.</p>
+                    </div>
+                    <span class="text-xl font-heading font-extrabold text-brand-red">R$ 75</span>
+                </div>
+
+                <!-- Serviço 9 -->
+                <div
+                    class="bg-brand-card p-6 rounded-xl border border-white/5 flex items-start justify-between group hover:border-brand-red/30 transition-colors">
+                    <div class="space-y-1">
+                        <h4 class="text-lg font-bold text-white group-hover:text-brand-red transition-colors">Barba</h4>
+                        <p class="text-xs text-gray-400">Alinhamento de barba com acabamento profissional.</p>
+                    </div>
+                    <span class="text-xl font-heading font-extrabold text-brand-red">R$ 40</span>
+                </div>
+
+                <!-- Serviço 10 -->
+                <div
+                    class="bg-brand-card p-6 rounded-xl border border-white/5 flex items-start justify-between group hover:border-brand-red/30 transition-colors">
+                    <div class="space-y-1">
+                        <h4 class="text-lg font-bold text-white group-hover:text-brand-red transition-colors">Corte navalhado + sobrancelha</h4>
+                        <p class="text-xs text-gray-400">Corte navalhado com design de sobrancelha.</p>
+                    </div>
+                    <span class="text-xl font-heading font-extrabold text-brand-red">R$ 48</span>
+                </div>
+
+                <!-- Serviço 11 -->
+                <div
+                    class="bg-brand-card p-6 rounded-xl border border-white/5 flex items-start justify-between group hover:border-brand-red/30 transition-colors md:col-span-2">
+                    <div class="space-y-1">
+                        <h4 class="text-lg font-bold text-white group-hover:text-brand-red transition-colors">Corte Navalhado + Barba express</h4>
+                        <p class="text-xs text-gray-400">Corte navalhado com barba express.</p>
+                    </div>
+                    <span class="text-xl font-heading font-extrabold text-brand-red">R$ 65</span>
+                </div>
+            </div>
+
+            <button type="button" id="toggle-services"
+                class="mx-auto mt-6 flex items-center justify-center gap-2 px-6 py-4 bg-brand-card hover:bg-brand-red border border-white/5 hover:border-brand-red rounded-xl text-white font-extrabold uppercase tracking-widest text-sm transition-all duration-300">
+                <span>Mostrar mais serviços</span>
+                <i data-lucide="chevron-down" class="w-4 h-4 transition-transform duration-300"></i>
+            </button>
+        </div>
+    </section>
+
+    <!-- Agendamento Inteligente & Contato -->
+    <section id="contato" class="py-24 bg-brand-black border-t border-white/5 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+
+                <!-- Informações Úteis (Esquerda) -->
+                <div class="lg:col-span-5 space-y-8">
+                    <div class="space-y-2">
+                        <span class="text-xs font-bold uppercase tracking-widest text-brand-red">Atendimento</span>
+                        <h2 class="text-3xl sm:text-4xl font-heading font-black text-white">CONTATOS & LOCAL</h2>
+                    </div>
+
+                    <div class="space-y-6">
+                        <!-- Horários -->
+                        <div class="p-6 bg-brand-card rounded-xl border border-white/5 space-y-4">
+                            <h3 class="font-heading font-bold text-white text-base flex items-center gap-2">
+                                <i data-lucide="clock" class="w-5 h-5 text-brand-red"></i>
+                                Horário de Funcionamento
+                            </h3>
+                            <div class="space-y-2 text-sm text-gray-400">
+                                <div class="flex justify-between gap-4 border-b border-white/5 pb-2">
+                                    <span>Segunda e quarta</span>
+                                    <span class="text-white font-semibold">09:00 - 20:20</span>
+                                </div>
+                                <div class="flex justify-between gap-4 border-b border-white/5 pb-2">
+                                    <span>Quinta</span>
+                                    <span class="text-white font-semibold">Até 18:20</span>
+                                </div>
+                                <div class="flex justify-between gap-4 border-b border-white/5 pb-2">
+                                    <span>Sexta</span>
+                                    <span class="text-white font-semibold">Até 17:40</span>
+                                </div>
+                                <div class="flex justify-between gap-4">
+                                    <span>Sábado</span>
+                                    <span class="text-white font-semibold">Até 15:40</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Endereço -->
+                        <div class="flex items-start gap-4">
+                            <div class="p-3 bg-brand-card border border-white/5 rounded-xl text-brand-red">
+                                <i data-lucide="map-pin" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-base">Nossa Localização</h4>
+                                <p class="text-sm text-gray-400">Av. Odon Pessoa de Albuquerque, 670 - Centro</p>
+                                <p class="text-xs text-gray-500">Agudos - SP, 17120-000</p>
+                            </div>
+                        </div>
+
+                        <!-- Telefone / Whats -->
+                        <div class="flex items-start gap-4">
+                            <div class="p-3 bg-brand-card border border-white/5 rounded-xl text-brand-red">
+                                <i data-lucide="phone" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-base">Contato Rápido</h4>
+                                <p class="text-sm text-gray-400">(14) 99107-5564</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Formulário de Agendamento Interativo (Direita) -->
+                <div id="agendamento-direto"
+                    class="lg:col-span-7 bg-brand-card p-8 rounded-2xl border border-brand-red/20 shadow-neon relative overflow-hidden">
+                    <!-- Brilho no topo do card -->
+                    <div
+                        class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-brand-red to-transparent">
+                    </div>
+
+                    <div class="space-y-2 mb-6">
+                        <h3 class="text-2xl font-heading font-black text-white">SIMULE SEU AGENDAMENTO</h3>
+                        <p class="text-sm text-gray-400">Escolha o serviço e envie a mensagem pré-pronta direto para o
+                            nosso WhatsApp de reservas.</p>
+                    </div>
+
+                    <form id="booking-form" class="space-y-6" onsubmit="sendWhatsApp(event)">
+                        <!-- Nome -->
+                        <div class="space-y-2">
+                            <label for="name" class="text-xs font-bold uppercase tracking-wider text-gray-300">Seu Nome
+                                completo</label>
+                            <input type="text" id="name" required placeholder="Ex: Rodrigo Santos"
+                                class="w-full bg-brand-black border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brand-red transition-colors text-sm">
+                        </div>
+
+                        <!-- Serviço -->
+                        <div class="space-y-2">
+                            <label for="service" class="text-xs font-bold uppercase tracking-wider text-gray-300">Qual o
+                                Serviço desejado?</label>
+                            <select id="service" required
+                                class="w-full bg-brand-black border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brand-red transition-colors text-sm">
+                                <option value="" disabled selected>Selecione um serviço</option>
+                                <option value="Corte degrade/cortes avançados (R$ 38)">Corte degrade/cortes avançados - R$ 38</option>
+                                <option value="Corte infantil - até 5 anos (R$ 45)">Corte infantil - até 5 anos - R$ 45</option>
+                                <option value="Corte navalhado (R$ 45)">Corte navalhado - R$ 45</option>
+                                <option value="COMBO 1 - Corte + sobrancelha (R$ 45)">COMBO 1 - Corte + sobrancelha - R$ 45</option>
+                                <option value="COMBO 2 - corte + barba express (R$ 62)">COMBO 2 - corte + barba express - R$ 62</option>
+                                <option value="COMBO 3 - corte + barba express + sobrancelha (R$ 65)">COMBO 3 - corte + barba express + sobrancelha - R$ 65</option>
+                                <option value="COMBO 4 - Corte navalhado + barba express + sobrancelha (R$ 70)">COMBO 4 - Corte navalhado + barba express + sobrancelha - R$ 70</option>
+                                <option value="COMBO 5 - Corte + Barboterapia (R$ 75)">COMBO 5 - Corte + Barboterapia - R$ 75</option>
+                                <option value="Barba (R$ 40)">Barba - R$ 40</option>
+                                <option value="Corte navalhado + sobrancelha (R$ 48)">Corte navalhado + sobrancelha - R$ 48</option>
+                                <option value="Corte Navalhado + Barba express (R$ 65)">Corte Navalhado + Barba express - R$ 65</option>
+                            </select>
+                        </div>
+
+                        <!-- Alerta Amigável para o Usuário -->
+                        <div
+                            class="text-xs text-gray-400 flex items-center gap-2 p-3 bg-brand-black rounded-lg border border-white/5">
+                            <i data-lucide="info" class="w-4 h-4 text-brand-red shrink-0"></i>
+                            <span>Você será redirecionado para o WhatsApp para confirmar sua reserva com a mensagem
+                                montada.</span>
+                        </div>
+
+                        <!-- Botão de Envio (CTA Gigante) -->
+                        <button type="submit"
+                            class="w-full py-4 bg-brand-red hover:bg-brand-redHover text-white font-extrabold uppercase tracking-widest rounded-lg transition-all duration-300 hover:shadow-neon-thick">
+                            Agendar pelo WhatsApp
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer class="bg-brand-darker border-t border-white/5 py-12">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+            <!-- Branding -->
+            <div class="text-center md:text-left space-y-2">
+                <span class="text-xl font-heading font-extrabold text-white">MARCUS ORTENSI<span
+                        class="text-brand-red">.</span></span>
+                <p class="text-xs text-gray-500">© 2026 Marcus Ortensi. Todos os direitos reservados.</p>
+            </div>
+
+            <!-- Redes Sociais no Rodapé -->
+            <div class="flex items-center gap-4">
+                <a href="https://www.instagram.com/ortensi_barber/" target=_blank rel="noopener noreferrer"
+                    class="p-3 rounded-xl bg-brand-card border border-white/5 text-gray-400 hover:text-white hover:border-brand-red hover:shadow-neon transition-all duration-300"
+                    aria-label="Acessar Instagram">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
+                </a>
+                <a href="https://tiktok.com/@ortensi_barber?r=1&t=ZS-96ixkPN1cPI" target="_blank" rel="noopener noreferrer"
+                    class="p-3 rounded-xl bg-brand-card border border-white/5 text-gray-400 hover:text-white hover:border-brand-red hover:shadow-neon transition-all duration-300"
+                    aria-label="Acessar TikTok">
+                    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                        <path
+                            d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.89-.6-4.09-1.5-.77-.6-1.39-1.39-1.81-2.3v7.33c.03 3.64-2.37 7.15-5.96 7.82-3.61.67-7.46-1.43-8.5-4.97C1.03 12.92 2.91 8.7 6.64 7.79c1.11-.27 2.29-.22 3.39.09v4.11c-.81-.32-1.74-.35-2.52.07-.95.49-1.53 1.55-1.41 2.63.15 1.34 1.41 2.37 2.76 2.19 1.35-.15 2.29-1.39 2.17-2.73.01-4.71.01-9.42.01-14.13z" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts do Site -->
+    <script>
+        // Inicializar Lucide Icons
+        if (window.lucide) {
+            lucide.createIcons();
+        }
+
+        // Controlar Menu Mobile
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('flex');
+        });
+
+        // Fechar menu mobile ao clicar em um link
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                mobileMenu.classList.remove('flex');
+            });
+        });
+
+        // Efeito Header Sticky com Scroll
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('py-4', 'bg-brand-black');
+                navbar.classList.remove('py-6', 'bg-brand-black/80');
+            } else {
+                navbar.classList.add('py-6', 'bg-brand-black/80');
+                navbar.classList.remove('py-4', 'bg-brand-black');
+            }
+        });
+
+        // Gaveta de serviços
+        const servicesList = document.getElementById('services-list');
+        const toggleServicesBtn = document.getElementById('toggle-services');
+
+        if (servicesList && toggleServicesBtn) {
+            const extraServices = Array.from(servicesList.children).slice(4);
+            const toggleServicesText = toggleServicesBtn.querySelector('span');
+            const toggleServicesIcon = toggleServicesBtn.querySelector('svg, [data-lucide]');
+            let servicesExpanded = false;
+
+            function updateServicesDrawer() {
+                extraServices.forEach(service => {
+                    service.classList.toggle('hidden', !servicesExpanded);
+                });
+
+                toggleServicesText.textContent = servicesExpanded ? 'Mostrar menos serviços' : 'Mostrar mais serviços';
+
+                if (toggleServicesIcon) {
+                    toggleServicesIcon.classList.toggle('rotate-180', servicesExpanded);
+                }
+            }
+
+            toggleServicesBtn.addEventListener('click', () => {
+                servicesExpanded = !servicesExpanded;
+                updateServicesDrawer();
+            });
+
+            updateServicesDrawer();
+        }
+
+        // Filtragem Interativa da Galeria de Trabalhos
+        function filterGallery(category) {
+            const items = document.querySelectorAll('.gallery-item');
+            const tabs = document.querySelectorAll('.gallery-tab');
+
+            // Resetar botões ativos
+            tabs.forEach(tab => {
+                tab.classList.remove('bg-brand-red', 'text-white');
+                tab.classList.add('text-gray-400', 'hover:text-white');
+            });
+
+            // Adicionar ativo ao atual
+            const activeTab = document.getElementById(`tab-${category}`);
+            if (activeTab) {
+                activeTab.classList.remove('text-gray-400', 'hover:text-white');
+                activeTab.classList.add('bg-brand-red', 'text-white');
+            }
+
+            // Filtrar itens com animação suave
+            items.forEach(item => {
+                const itemCategory = item.getAttribute('data-category');
+                if (category === 'todos' || itemCategory === category) {
+                    item.style.display = 'block';
+                    setTimeout(() => {
+                        item.style.opacity = '1';
+                        item.style.transform = 'scale(1)';
+                    }, 50);
+                } else {
+                    item.style.opacity = '0';
+                    item.style.transform = 'scale(0.9)';
+                    setTimeout(() => {
+                        item.style.display = 'none';
+                    }, 300);
+                }
+            });
+        }
+
+        // Envio do Formulário de Agendamento Dinâmico para o WhatsApp
+        function sendWhatsApp(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const service = document.getElementById('service').value;
+
+            // Número fictício para o WhatsApp (Substitua pelo seu número real, apenas dígitos com DDI e DDD)
+            const phoneNumber = "5514991075564";
+
+            // Montar mensagem amigável e profissional
+            const message = `Olá! Gostaria de agendar um horário.%0A%0A` +
+                `*Nome:* ${name}%0A` +
+                `*Serviço:* ${service}%0A` +
+                `*Quais datas e horários estão disponíveis?*%0A%0A` +
+                `_Enviado através do site Marcus Ortensi._`;
+
+            // Gerar link da API do WhatsApp
+            const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${message}`;
+
+            // Abrir em uma nova aba
+            window.open(whatsappUrl, '_blank');
+        }
+    </script>
+</body>
+
+</html>
